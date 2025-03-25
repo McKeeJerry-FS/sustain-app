@@ -1,14 +1,10 @@
-require('dotenv').config();
-
-module.exports = {
-  development: {
+const knex = require('knex')({
     client: 'pg',
     connection: {
         host: 'localhost',
         user: 'postgres',
         password: 'Momiji21',
-        database: 'Healthcare_CRM',
+        database: 'Sustain_App_DB',
         port: 5432
     }
-  },
-};
+});
