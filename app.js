@@ -23,6 +23,17 @@ app.set('layout', 'layout'); // Set the default layout
 // Static Files
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+// Session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Flash
 app.use(flash());

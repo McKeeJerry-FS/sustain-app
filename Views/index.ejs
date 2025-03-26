@@ -1,1 +1,13 @@
 <h1>Gardens</h1>
+<ul>
+  <% if (garden && garden.length > 0) { %>
+      <% garden.forEach(garden => { %>
+          <li><%= garden.garden_name %></li>
+          <li><%= garden.garden_type %></li>
+          <li><%= garden.indoor %></li>
+          <br /
+      <% }) %>
+  <% } else { %>
+      <li>No gardens found</li>
+  <% } %>
+</ul>

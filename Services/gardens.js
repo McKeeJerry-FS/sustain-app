@@ -9,13 +9,11 @@ module.exports = {
 
   getGardens: async () => {
     try{
-
-      const data = db('GARDENS')
+      const data = db('gardens')
       .select('*');
-      console.log(data);
       return data;
     } catch (err) {
-      console.erro('Error retrieving garden data: ',err);
+      console.error('Error retrieving garden data: ',err);
     }
   },
 
