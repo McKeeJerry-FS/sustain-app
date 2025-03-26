@@ -6,8 +6,8 @@ module.exports = {
     connection: {
         host: 'localhost',
         user: 'postgres',
-        password: 'Momiji21',
-        database: 'Healthcare_CRM',
+        password: 'Momiji25!',
+        database: 'SustainableHobbiesDb',
         port: 5432
     }
   },

@@ -12,7 +12,7 @@ const zipcodeToTimezone = require('zipcode-to-timezone');
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -41,7 +41,7 @@ app.locals.hotkeys = hotkeys;
 app.locals.zipcodeToTimezone = zipcodeToTimezone;
 
 // Routes
-app.use('/', require('./Routes/routes.js'));
+app.use('/', require('./Routes/routes'));
 
 // Error handling
 function errorHandler(err, req, res, next) {

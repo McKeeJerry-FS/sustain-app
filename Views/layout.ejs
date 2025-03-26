@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+    <head>
+        <%- include('partials/head') %>
+    </head>
+    <body class="has-background-light">
+        <div id="app">
+            <%- include('partials/navbar') %>
+            <div class="container">
+                <%- include('partials/flashmsg') %>
+                <%- body %>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <%- include('partials/footer') %>
+            </div>
+        </footer>
+    </body>
+    
+</html>

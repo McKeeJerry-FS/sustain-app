@@ -1,0 +1,49 @@
+<script type="text/javascript">
+  const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+  });
+</script>
+
+<% if (typeof success_msg !== 'undefined' && success_msg != '') { %>
+  <script type="text/javascript">
+      Toast.fire({
+          icon: 'success',
+          title: '<%= success_msg %>'
+      });
+  </script>
+<% } %>
+
+<% if (typeof error_msg !== 'undefined' && error_msg != '') { %>
+  <script type="text/javascript">
+      Toast.fire({
+          icon: 'error',
+          title: '<%= error_msg %>'
+      });
+  </script>
+<% } %>
+
+<% if (typeof info_msg !== 'undefined' && info_msg != '') { %>
+  <script type="text/javascript">
+      Toast.fire({
+          icon: 'info',
+          title: '<%= info_msg %>'
+      });
+  </script>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error != '') { %>
+  <script type="text/javascript">
+      Toast.fire({
+          icon: 'error',
+          title: '<%= error %>'
+      });
+  </script>
+<% } %>
