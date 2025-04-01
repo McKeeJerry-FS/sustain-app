@@ -25,7 +25,7 @@
       <a class="navbar-item" href="/account/0">
         Gardens
       </a>
-      
+
       <a class="navbar-item" href="/account/0">
         Blog
       </a>
@@ -56,12 +56,18 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+          <% if (!user) { %>
+        <a class="button is-primary" href="/auth/register">
+          <strong>Sign up</strong>
+        </a>
+        <a class="button is-light" href="/auth/login">
+          Log in
+        </a>
+      <% } else { %>
+        <a class="button is-light" href="/auth/logout">
+          Log out
+        </a>
+      <% } %>
         </div>
       </div>
     </div>

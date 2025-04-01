@@ -8,6 +8,9 @@ const moment = require('moment');
 const moment_tz = require('moment-timezone');
 const hotkeys = require('hotkeys-js');
 const zipcodeToTimezone = require('zipcode-to-timezone');
+const mongoose = require('mongoose');
+const passport = require('./Config/passport');
+const authRoutes = require('./Routes/authRoutes');
 
 
 
@@ -30,10 +33,17 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Middleware
+app.use(express.json());
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error(err));
 
 // Flash
 app.use(flash());
@@ -52,6 +62,7 @@ app.locals.hotkeys = hotkeys;
 app.locals.zipcodeToTimezone = zipcodeToTimezone;
 
 // Routes
+app.use('/auth', authRoutes);
 app.use('/', require('./Routes/routes'));
 
 // Error handling
