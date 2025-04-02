@@ -3,7 +3,7 @@ const router = express.Router();
 const Garden = require('../Controllers/gardenController');
 
 router.get('/', (req, res) => {
-  res.render('index', { user: req.user }); // Pass the user object
+  res.render('index', { title: 'Home', user: req.user || null }); // Pass title and user
 });
 
 
