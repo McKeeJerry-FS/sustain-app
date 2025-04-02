@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const expressEJSLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
-const passport = require('passport');
+//const passport = require('passport');
 const moment = require('moment');
 const moment_tz = require('moment-timezone');
 const hotkeys = require('hotkeys-js');
@@ -35,6 +36,10 @@ app.use(session({
 
 // Middleware
 app.use(express.json());
+app.use((req, res, next) => {
+    res.locals.user = req.user || null; // Make user available in all views
+    next();
+});
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
