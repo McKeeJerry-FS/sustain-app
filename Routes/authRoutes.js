@@ -22,33 +22,51 @@ router.get('/register', (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log('Login attempt:', { username, password }); // Log the login attempt
 
     // Find the user in the database
     const user = await User.findOne({ username });
-    console.log('User found:', user); // Log the found user
 
     if (!user) {
-      return res.status(400).json({ success: false, message: 'User not found' });
+      return res.status(400).render('auth/login', { 
+        title: 'Login', 
+        error_msg: 'User not found', 
+        user: null 
+      });
     }
-
-    console.log('Stored hashed password:', user.password); // Log the stored hashed password
 
     // Compare the provided password with the hashed password in the database
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log('Password comparison result:', isMatch); // Log the result of the comparison
 
     if (!isMatch) {
-      return res.status(400).json({ success: false, message: 'Invalid credentials'});
+      return res.status(400).render('auth/login', { 
+        title: 'Login', 
+        error_msg: 'Invalid credentials', 
+        user: null 
+      });
     }
 
-    // If authentication is successful, send a success response
-    res.status(200).json({ success: true, message: 'Login successful', user });
+    // If authentication is successful, redirect to the dashboard
+    req.login(user, (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).render('auth/login', { 
+          title: 'Login', 
+          error_msg: 'Error logging in', 
+          user: null 
+        });
+      }
+      return res.redirect('/dashboard');
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: 'Error logging in' });
+    res.status(500).render('auth/login', { 
+      title: 'Login', 
+      error_msg: 'Error logging in', 
+      user: null 
+    });
   }
 });
+
 // Handle registration form submission
 router.post('/register', async (req, res) => {
   try {
@@ -74,6 +92,22 @@ router.post('/register', async (req, res) => {
     console.error(error);
     res.status(500).json({ success: false, message: 'Error registering user' });
   }
+});
+
+// Handle logout
+router.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error('Error logging out:', err);
+      return res.status(500).render('auth/login', { 
+        title: 'Login', 
+        error_msg: 'Error logging out', 
+        user: null 
+      });
+    }
+    // Redirect to the login page after successful logout
+    res.redirect('/auth/login');
+  });
 });
 
 module.exports = router;
