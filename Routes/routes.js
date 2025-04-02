@@ -6,6 +6,14 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Home', user: req.user || null }); // Pass title and user
 });
 
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'About', user: req.user || null }); // Pass title and user
+});
+
+router.get('/contact', (req, res) => {
+  res.render('contact', { title: 'Contact', user: req.user || null }); // Pass title and user
+});
+
 router.get('/dashboard', (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/auth/login');
@@ -13,6 +21,18 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: 'Dashboard', user: req.user });
 });
 
+router.get('/garden', (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  res.render('garden', { title: 'Garden', user: req.user });
+});
 
+router.get('/blog', (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  res.render('blog', { title: 'Blog', user: req.user });
+});
 
 module.exports = router;
