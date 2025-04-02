@@ -3,7 +3,7 @@
   <div class="columns is-centered is-half">
     <div class="column is-half">
       <div class="box has-shadow">
-        <form action="/auth/login" method="POST">
+        <form id="registerForm" action="/auth/login" method="POST">
           <div class="field">
             <label class="label">Username</label>
             <div class="control">
@@ -33,7 +33,7 @@
             <div class="control">
               <input
                 class="input"
-                type="firstName"
+                type="text"
                 name="firstName"
                 placeholder="Enter your first name"
                 required
@@ -45,8 +45,8 @@
             <div class="control">
               <input
                 class="input"
-                type="password"
-                name="password"
+                type="text"
+                name="lastName"
                 placeholder="Enter your last name"
                 required
               />
@@ -72,3 +72,34 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  const form = document.getElementById('registerForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        swal('Success!', result.message, 'success').then(() => {
+          window.location.href = '/auth/login';
+        });
+      } else {
+        swal('Error!', result.message, 'error');
+      }
+    } catch (error) {
+      swal('Error!', 'Something went wrong. Please try again.', 'error');
+    }
+  });
+</script>

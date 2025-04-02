@@ -38,6 +38,7 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.14.1",
+    "sweetalert": "^2.1.2",
     "zipcode-to-timezone": "^0.0.9"
   }
 }
