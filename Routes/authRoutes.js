@@ -19,52 +19,22 @@ router.get('/register', (req, res) => {
 });
 
 // Handle login form submission
-router.post('/login', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-
-    // Find the user in the database
-    const user = await User.findOne({ username });
-
+router.post('/login', async (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) return next(err);
     if (!user) {
-      return res.status(400).render('auth/login', { 
-        title: 'Login', 
-        error_msg: 'User not found', 
-        user: null 
+      return res.status(400).render('auth/login', {
+        title: 'Login',
+        error_msg: info.message || 'Invalid credentials',
+        user: null,
       });
     }
 
-    // Compare the provided password with the hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      return res.status(400).render('auth/login', { 
-        title: 'Login', 
-        error_msg: 'Invalid credentials', 
-        user: null 
-      });
-    }
-
-    // If authentication is successful, redirect to the dashboard
     req.login(user, (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).render('auth/login', { 
-          title: 'Login', 
-          error_msg: 'Error logging in', 
-          user: null 
-        });
-      }
-      return res.redirect('/dashboard');
+      if (err) return next(err);
+      return res.redirect('/dashboard'); // Redirect to a protected page
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).render('auth/login', { 
-      title: 'Login', 
-      error_msg: 'Error logging in', 
-      user: null 
-    });
-  }
+  })(req, res, next);
 });
 
 // Handle registration form submission

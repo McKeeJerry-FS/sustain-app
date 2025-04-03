@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 //const passport = require('passport');
 const moment = require('moment');
+const bcrypt = require('bcrypt');
 const moment_tz = require('moment-timezone');
 const hotkeys = require('hotkeys-js');
 const zipcodeToTimezone = require('zipcode-to-timezone');
@@ -29,8 +30,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(
 	session({
 		secret: 'secret',
-		resave: true,
-		saveUninitialized: true,
+		resave: false,
+		saveUninitialized: false,
 	}),
 );
 
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null; // Make user available in all views
   next();
 });
+
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
