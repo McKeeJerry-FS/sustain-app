@@ -21,6 +21,17 @@
     "wdth" 100;
 }
 
+#dashboard-header {
+  font-family: "DM Serif Display", serif;
+  font-size: 48px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  margin-bottom: 2rem;
+}
+
 #chartdiv {
   width: 100%;
   height: 250px;
@@ -28,3 +39,25 @@
 }
 
 
+<<<<<<< HEAD
+=======
+#sect2 > .column {
+  flex: 1; /* Ensures equal width for all columns */
+  height: 250px; /* Fixed height */
+}
+
+#col1 {
+  width: 25%;
+}
+
+#col2 {
+  width: 50%;
+}
+#col3 {
+  width: 25%;
+}
+
+footer {
+  margin-top : 4rem;
+}
+>>>>>>> 4523235e0af34015994b2cbf08edbb2804b8ef76
