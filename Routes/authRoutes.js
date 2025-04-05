@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('../Models/userModel'); 
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { register, login } = require('../Controllers/authController');
 
@@ -32,7 +33,12 @@ router.post('/login', async (req, res, next) => {
 
     req.login(user, (err) => {
       if (err) return next(err);
-      return res.redirect('/dashboard'); // Redirect to a protected page
+      // Generate a JWT token for the user
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      console.log('Generated token from backend:', token); // Log the generated token
+      // Store the token in the session or send it to the client
+      res.json({ title: 'Login Successful', token: token, redirectUrl: '/dashboard' });
+
     });
   })(req, res, next);
 });
@@ -66,6 +72,7 @@ router.post('/register', async (req, res) => {
 
 // Handle logout
 router.get('/logout', (req, res) => {
+  res.clearCookie('token'); // Clear the token cookie
   req.logout((err) => {
     if (err) {
       console.error('Error logging out:', err);
