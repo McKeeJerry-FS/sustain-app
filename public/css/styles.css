@@ -39,25 +39,3 @@
 }
 
 
-<<<<<<< HEAD
-=======
-#sect2 > .column {
-  flex: 1; /* Ensures equal width for all columns */
-  height: 250px; /* Fixed height */
-}
-
-#col1 {
-  width: 25%;
-}
-
-#col2 {
-  width: 50%;
-}
-#col3 {
-  width: 25%;
-}
-
-footer {
-  margin-top : 4rem;
-}
->>>>>>> 4523235e0af34015994b2cbf08edbb2804b8ef76
