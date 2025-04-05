@@ -27,30 +27,4 @@
   max-width: 100%;
 }
 
-#sect2 {
-  display: flex;
-  flex-direction: row; /* Aligns columns in a row */
-  justify-content: space-between; /* Adds space between columns */
-  align-items: stretch; /* Ensures all columns have the same height */
-  gap: 1rem; /* Adds spacing between columns */
-  margin-top: 2rem;
-  background-color: blue;
-  color: white;
-  height: 300px; /* Height of the parent container */
-}
 
-#sect2 > .column {
-  flex: 1; /* Ensures equal width for all columns */
-  height: 250px; /* Fixed height */
-}
-
-#col1 {
-  width: 25%;
-}
-
-#col2 {
-  width: 50%;
-}
-#col3 {
-  width: 25%;
-}
