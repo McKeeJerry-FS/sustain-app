@@ -1,0 +1,25 @@
+<h1>Login Successful</h1>
+<script>
+  // Store the token in localStorage
+  const response = { 
+    token: '<%= token %>',
+    redirectUrl: '<%= redirectUrl %>'
+  };
+
+  const token = response.token;
+
+  if (token) {
+    localStorage.setItem('jwtToken', token);
+
+    // Clear form data to prevent resubmission
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+
+    // Redirect to the dashboard
+    window.location.href = response.redirectUrl || '/dashboard';
+  } else {
+    alert('Login failed: Token is missing');
+    window.location.href = '/auth/login';
+  }
+</script>
