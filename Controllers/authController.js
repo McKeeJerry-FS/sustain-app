@@ -13,7 +13,16 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const user = req.user;
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  res.json({ token });
+  try {
+    const user = req.user;
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.render('dashboard', { title: 'Dashboard', user, token });
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).render('auth/login', { 
+      title: 'Login', 
+      error_msg: 'Error logging in. Please try again.', 
+      user: null 
+    });
+  }
 };

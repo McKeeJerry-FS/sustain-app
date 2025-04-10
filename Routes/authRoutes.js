@@ -33,16 +33,12 @@ router.post('/login', async (req, res, next) => {
 
     req.login(user, (err) => {
       if (err) return next(err);
-      // Generate a JWT token for the user
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-      console.log('Generated token from backend:', token); // Log the generated token
-      // Store the token in the session or send it to the client
-      res.json({ title: 'Login Successful', token: token, redirectUrl: '/dashboard' });
-
+      console.log('User logged in:', user); // Log the logged-in user
+      // Render the dashboard view and pass the user object
+      res.render('dashboard', { title: 'Dashboard', user });
     });
   })(req, res, next);
 });
-
 // Handle registration form submission
 router.post('/register', async (req, res) => {
   try {

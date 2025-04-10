@@ -26,14 +26,7 @@ app.set('layout', 'layout'); // Set the default layout
 // Static Files
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// Session
-app.use(
-	session({
-		secret: 'secret',
-		resave: false,
-		saveUninitialized: false,
-	}),
-);
+
 
 // Middleware
 app.use(express.json());
@@ -42,6 +35,15 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null; // Make user available in all views
   next();
 });
+
+// Session
+app.use(
+	session({
+		secret: 'secret',
+		resave: false,
+		saveUninitialized: false,
+	}),
+);
 
 // Passport
 app.use(passport.initialize());
