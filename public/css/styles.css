@@ -70,3 +70,22 @@ th:not([align]) {
 .row {
   display: table-row;
 }
+
+
+@media print {
+  /* Hide buttons and other non-essential elements */
+  button {
+    display: none;
+  }
+
+  /* Adjust the layout for printing */
+  body {
+    font-size: 12px;
+    color: #000;
+  }
+
+  .box {
+    border: 1px solid #000;
+    padding: 10px;
+  }
+}

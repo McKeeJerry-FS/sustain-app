@@ -1,5 +1,6 @@
 <h1 class="is-size-3">Daily Activity Journal</h1>
 <button class="button is-small is-primary">Add New Entry</button>
+<button class="button is-small is-primary" onclick="printJournal()">Print Journal Entry</button>
 <hr />
 <div class="columns mb-3">
   <div class="column">
@@ -60,6 +61,44 @@
             1.0 mS/cm
           </div>
         </div>
+        <div class="row">
+          <div class="cell">
+            <label for="" class="label">
+              Lighting (Active): 
+            </label>
+          </div>
+          <div class="cell">
+            <span>16 Hours</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell">
+            <label for="" class="label">
+              Lighting (Dark): 
+            </label>
+          </div>
+          <div class="cell">
+            <span>8 Hours</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell">
+            <label for="" class="label">
+              Humidity: 
+            </label>
+          </div>
+          <div class="cell">
+            <span>60%</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell">
+            <label for="" class="label">Images</label>
+          </div>
+          <div class="cell">
+            <img src="/public/img/growtent.jpeg" alt="Image 1" class="image is-128x128" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -68,12 +107,30 @@
       <div class="table">
         <div class="row">
           <div class="cell">
-            
           </div>
           <div class="cell">
-            
           </div>
         </div>
       </div>
     </div>
 </div>
+
+<script>
+  function printJournal() {
+    window.print(); // This will open the browser's print dialog
+  }
+
+  function printJournal() {
+    const printContent = document.querySelector('.box'); // Select the journal entry container
+    const originalContent = document.body.innerHTML;
+
+    // Replace the body content with the journal entry content
+    document.body.innerHTML = printContent.outerHTML;
+
+    // Trigger the print dialog
+    window.print();
+
+    // Restore the original content
+    document.body.innerHTML = originalContent;
+  }
+</script>
