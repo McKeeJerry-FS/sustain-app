@@ -38,4 +38,35 @@
   max-width: 100%;
 }
 
+.cell{
+  display: table-cell;
+  width: 450px;
+  border: none;
+  padding: 8px; /* Adjust padding as needed */
+  text-align: left; /* Change alignment as needed */
+}
 
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  margin-bottom: 1rem;
+}
+
+td,
+th {
+  padding: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+td:not([align]),
+th:not([align]) {
+  text-align: inherit;
+}
+
+.row {
+  display: table-row;
+}
