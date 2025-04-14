@@ -19,6 +19,7 @@
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.8",
+    "ckeditor5": "^45.0.0",
     "connect-flash": "^0.1.1",
     "datatables": "^1.10.18",
     "dotenv": "^16.4.7",
