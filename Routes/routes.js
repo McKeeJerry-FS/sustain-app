@@ -36,6 +36,13 @@ router.get('/blog',  (req, res) => {
   res.render('blog', { title: 'Blog', user: req.user });
 });
 
+router.get('/journal',  (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  res.render('journal', { title: 'Journal', user: req.user });
+});
+
 router.get('/equipment', (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/auth/login');
