@@ -7,75 +7,83 @@
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
-      <div class="field">
-        <label class="label">Date</label>
-        <div class="control">
-          <input id="entryDate" class="input" type="date">
+      <form id="journalEntryForm" enctype="multipart/form-data">
+        <div class="field">
+          <label class="label">Date</label>
+          <div class="control">
+            <input id="entryDate" class="input" type="date">
+          </div>
+        <div class="field">
+          <label class="label">Journal Entry</label>
+          <div class="control">
+            <textarea id="journalEntryArea" name="journalEntry" class="textarea" placeholder="Write your journal entry here..."></textarea>
+          </div>
         </div>
-      <div class="field">
-        <label class="label">Journal Entry</label>
-        <div class="control">
-          <textarea id="journalEntryArea" class="textarea" placeholder="Write your journal entry here..."></textarea>
+        <div class="field">
+          <label class="label">pH</label>
+          <div class="control">
+            <input id="ph" name="ph" class="input" type="text" placeholder="Enter pH value">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">pH</label>
-        <div class="control">
-          <input id="ph" class="input" type="text" placeholder="Enter pH value">
+        <div class="field">
+          <label class="label">Humidity</label>
+          <div class="control">
+            <input id="humidity" name="humidity" class="input" type="text" placeholder="Enter Humidity value">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Humidity</label>
-        <div class="control">
-          <input id="humidity" class="input" type="text" placeholder="Enter Humidity value">
+        <div class="field">
+          <label class="label">EC</label>
+          <div class="control">
+            <input id="ec" name="ec" class="input" type="text" placeholder="Enter EC value">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">EC</label>
-        <div class="control">
-          <input id="ec" class="input" type="text" placeholder="Enter EC value">
+        <div class="field">
+          <label class="label">Water Level</label>
+          <div class="control">
+            <input id="waterLevel" name="waterLevel" class="input" type="text" placeholder="Enter Water Level value">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Temperature (Air)</label>
-        <div class="control">
-          <input id="tempAir" class="input" type="text" placeholder="Enter air temperature">
+        <div class="field">
+          <label class="label">Temperature (Air)</label>
+          <div class="control">
+            <input id="tempAir" name="airTemp" class="input" type="text" placeholder="Enter air temperature">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Temperature (Water)</label>
-        <div class="control">
-          <input id="tempWater" class="input" type="text" placeholder="Enter water temperature">
+        <div class="field">
+          <label class="label">Temperature (Water)</label>
+          <div class="control">
+            <input id="tempWater" name="waterTemp" class="input" type="text" placeholder="Enter water temperature">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Lighting (Active)</label>
-        <div class="control">
-          <input id="lightingActive" class="input" type="text" placeholder="Enter nutrient solution details">
+        <div class="field">
+          <label class="label">Lighting (Active)</label>
+          <div class="control">
+            <input id="lightingActive" name="lightActive" class="input" type="text" placeholder="Enter nutrient solution details">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Lighting (Dark)</label>
-        <div class="control">
-          <input id="lightingDark" class="input" type="text" placeholder="Enter nutrient solution details">
+        <div class="field">
+          <label class="label">Lighting (Dark)</label>
+          <div class="control">
+            <input id="lightingDark" name="lightInactive" class="input" type="text" placeholder="Enter nutrient solution details">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Notes</label>
-        <div class="control">
-          <textarea id="notes" class="textarea" placeholder="Additional notes..."></textarea>
+        <div class="field">
+          <label class="label">Notes</label>
+          <div class="control">
+            <textarea id="notes" name="notes" class="textarea" placeholder="Additional notes..."></textarea>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Image Upload</label>
-        <div class="control">
-          <input id="imageUpload" class="input" type="file" accept="image/*">
+        <div class="field">
+          <label class="label">Image Upload</label>
+          <div class="control">
+            <input id="imageUpload" name="image" class="input" type="file" accept="image/*">
+          </div>
         </div>
-      </div>
+        <button type="submit" class="button is-info">Add Entry</button>
+      </form>
     </section>
     <footer class="modal-card-foot has-background-primary">
       <div class="buttons">
-        <button class="button is-info">Save changes</button>
         <button class="button is-danger">Cancel</button>
       </div>
     </footer>
@@ -83,12 +91,62 @@
 </div>
 
 <script src="https://cdn.tiny.cloud/1/o1vp1h0xeiv7vzeq5zioltlng00d3cxnsal4zfavso8s9jdo/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
+  // script for TinyMCE editor
   tinymce.init({
-        selector: '#journalEntryArea',
-        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | image code hr ',
-        plugins: 'lists link image code hr',
-        menubar: 'format insert'
+    selector: '#journalEntryArea',
+    toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | image code hr ',
+    plugins: 'lists link image code hr',
+    menubar: 'format insert'
+  });
+
+  document.getElementById('journalEntryForm').addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Synchronize TinyMCE content with the textarea
+    tinymce.triggerSave();
+
+    const formData = new FormData(this); // Collect form data
+
+    try {
+      const response = await fetch('/journal/add', {
+        method: 'POST',
+        body: formData,
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Show success SweetAlert
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: result.message,
+          confirmButtonText: 'OK',
+        }).then(() => {
+          // Redirect to the journal page
+          window.location.href = '/journal';
+        });
+      } else {
+        // Show error SweetAlert
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: result.message,
+          confirmButtonText: 'OK',
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'An unexpected error occurred. Please try again.',
+        confirmButtonText: 'OK',
+      });
+    }
+  });
 
 </script>

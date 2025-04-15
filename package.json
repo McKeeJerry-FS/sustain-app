@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "body-parser": "^2.2.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.8",
     "ckeditor5": "^45.0.0",
@@ -38,6 +39,7 @@
     "moment-timezone": "^0.5.48",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.0",
+    "multer": "^1.4.5-lts.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",

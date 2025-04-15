@@ -5,7 +5,7 @@ const expressEJSLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-//const passport = require('passport');
+const bodyParser = require('body-parser');
 const moment = require('moment');
 const bcrypt = require('bcrypt');
 const moment_tz = require('moment-timezone');
@@ -18,6 +18,9 @@ const authRoutes = require('./Routes/authRoutes');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(bodyParser.json()); // Parse JSON bodies
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

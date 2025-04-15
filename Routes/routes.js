@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' }); // Configure the upload destination
 const Garden = require('../Controllers/gardenController');
+const journalController = require('../Controllers/journalController');
 //const authenticateToken = require('../Middlewares/tokenMiddelware'); // Import the token middleware
 
 router.get('/', (req, res) => {
@@ -57,6 +60,15 @@ router.get('/plants', (req, res) => {
   res.render('plants', { title: 'Your PLants', user: req.user });
 });
 
+// ******************************************************************
+//                         Journal Routes
+// ******************************************************************
 
+router.post('/journal/add', upload.single('image'), (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  journalController.addJournalEntry(req, res, next);
+});
 
 module.exports = router;
