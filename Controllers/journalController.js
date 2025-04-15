@@ -2,11 +2,12 @@ const JournalEntry = require('../Models/journalModel');
 
 exports.addJournalEntry = async (req, res) => {
   try {
-    const { journalEntry, ph, ec, humidity, airTemp, waterTemp, waterLevel, lightActive, lightInactive, notes, image } = req.body;
+    const { date, journalEntry, ph, ec, humidity, airTemp, waterTemp, waterLevel, lightActive, lightInactive, notes, image } = req.body;
     console.log('Request Body:', req.body); // Log form data
     console.log('Uploaded File:', req.file); // Log uploaded file details
     // Create a new journal entry and associate it with the logged-in user
     const newEntry = new JournalEntry({
+      date,
       journalEntry,
       ph,
       ec,
