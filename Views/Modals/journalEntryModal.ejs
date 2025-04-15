@@ -18,6 +18,60 @@
           <textarea id="journalEntryArea" class="textarea" placeholder="Write your journal entry here..."></textarea>
         </div>
       </div>
+      <div class="field">
+        <label class="label">pH</label>
+        <div class="control">
+          <input id="ph" class="input" type="text" placeholder="Enter pH value">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Humidity</label>
+        <div class="control">
+          <textarea id="humidity" class="textarea" placeholder="Enter Humidity value"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">EC</label>
+        <div class="control">
+          <input id="ec" class="input" type="text" placeholder="Enter EC value">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Temperature (Air)</label>
+        <div class="control">
+          <input id="tempAir" class="input" type="text" placeholder="Enter air temperature">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Temperature (Water)</label>
+        <div class="control">
+          <input id="tempWater" class="input" type="text" placeholder="Enter water temperature">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Lighting (Active)</label>
+        <div class="control">
+          <input id="nutrientSolution" class="input" type="text" placeholder="Enter nutrient solution details">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Lighting (Dark)</label>
+        <div class="control">
+          <input id="nutrientSolution" class="input" type="text" placeholder="Enter nutrient solution details">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Notes</label>
+        <div class="control">
+          <textarea id="notes" class="textarea" placeholder="Additional notes..."></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Image Upload</label>
+        <div class="control">
+          <input id="imageUpload" class="input" type="file" accept="image/*">
+        </div>
+      </div>
     </section>
     <footer class="modal-card-foot has-background-primary">
       <div class="buttons">
@@ -32,7 +86,7 @@
 <script>
   tinymce.init({
         selector: '#journalEntryArea',
-        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | anchor checklist code hr ',
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | image code hr ',
         plugins: 'lists link image code hr',
         menubar: 'format insert'
       });
