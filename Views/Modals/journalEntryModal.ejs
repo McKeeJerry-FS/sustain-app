@@ -1,6 +1,6 @@
-<div class="modal" id="journalEntryModal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
+<div class="modal modal-lg" id="journalEntryModal">
+  <div class="modal-background is-two-thirds"></div>
+  <div class="modal-card is-two-thirds">
     <header class="modal-card-head has-background-primary">
       <p class="modal-card-title">Add a New Journal Entry</p>
       <button class="delete" aria-label="close"></button>
@@ -31,7 +31,10 @@
 <script src="https://cdn.tiny.cloud/1/o1vp1h0xeiv7vzeq5zioltlng00d3cxnsal4zfavso8s9jdo/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
   tinymce.init({
-        selector: '#journalEntryArea'
+        selector: '#journalEntryArea',
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | anchor checklist code hr ',
+        plugins: 'lists link image code hr',
+        menubar: 'format insert'
       });
 
 </script>
