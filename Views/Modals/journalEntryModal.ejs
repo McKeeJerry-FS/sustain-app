@@ -1,23 +1,37 @@
 <div class="modal" id="journalEntryModal">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
+    <header class="modal-card-head has-background-primary">
+      <p class="modal-card-title">Add a New Journal Entry</p>
       <button class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
+      <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+          <input id="entryDate" class="input" type="date">
+        </div>
+      <div class="field">
+        <label class="label">Journal Entry</label>
+        <div class="control">
+          <textarea id="journalEntryArea" class="textarea" placeholder="Write your journal entry here..."></textarea>
+        </div>
+      </div>
     </section>
-    <footer class="modal-card-foot">
+    <footer class="modal-card-foot has-background-primary">
       <div class="buttons">
-        <button class="button is-success">Save changes</button>
-        <button class="button">Cancel</button>
+        <button class="button is-info">Save changes</button>
+        <button class="button is-danger">Cancel</button>
       </div>
     </footer>
   </div>
 </div>
 
+<script src="https://cdn.tiny.cloud/1/o1vp1h0xeiv7vzeq5zioltlng00d3cxnsal4zfavso8s9jdo/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-
+  tinymce.init({
+        selector: '#journalEntryArea'
+      });
 
 </script>
