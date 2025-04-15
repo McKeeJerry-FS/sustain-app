@@ -6,6 +6,10 @@ const Garden = require('../Controllers/gardenController');
 const journalController = require('../Controllers/journalController');
 //const authenticateToken = require('../Middlewares/tokenMiddelware'); // Import the token middleware
 
+
+// ******************************************************************
+//                         View Routes
+// ******************************************************************
 router.get('/', (req, res) => {
   res.render('index', { title: 'Home', user: req.user || null }); // Pass title and user
 });
