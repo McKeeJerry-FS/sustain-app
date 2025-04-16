@@ -33,7 +33,7 @@ router.post('/login', async (req, res, next) => {
 
     req.login(user, (err) => {
       if (err) return next(err);
-      console.log('User logged in:', user); // Log the logged-in user
+      //console.log('User logged in:', user); // Log the logged-in user
       // Render the dashboard view and pass the user object
       res.render('dashboard', { title: 'Dashboard', user });
     });
@@ -42,7 +42,7 @@ router.post('/login', async (req, res, next) => {
 // Handle registration form submission
 router.post('/register', async (req, res) => {
   try {
-    console.log('Request body:', req.body); // Log the request body for debugging
+    //console.log('Request body:', req.body); // Log the request body for debugging
     const { username, password, firstName, lastName, email } = req.body;
 
     // Create a new user (password will be hashed in the userModel's pre('save') middleware)

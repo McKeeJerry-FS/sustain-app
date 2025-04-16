@@ -75,13 +75,16 @@ router.get('/plants', (req, res) => {
 //   journalController.addJournalEntry(req, res, next);
 // });
 
+router.get('/journal/entries', ensureAuthenticated, journalController.getJournalEntries);
+router.get('/journal/entries/:id', ensureAuthenticated, journalController.getJournalEntryById);
+
 router.post('/journal/add', ensureAuthenticated, upload.single('image'), journalController.addJournalEntry);
 
 module.exports = router;
 
 function ensureAuthenticated(req, res, next) {
-  console.log('Is Authenticated:', req.isAuthenticated());
-  console.log('User:', req.user);
+  // console.log('Is Authenticated:', req.isAuthenticated());
+  // console.log('User:', req.user);
   if (req.isAuthenticated()) {
     return next(); // User is authenticated, proceed to the next middleware or route handler
   }

@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const user = req.user;
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '8h' });
     res.render('dashboard', { title: 'Dashboard', user, token });
   } catch (err) {
     console.error('Error during login:', err);
