@@ -38,6 +38,12 @@
   max-width: 100%;
 }
 
+#updates-content {
+  max-height: 400px; /* Set a fixed height for the card */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 1rem; /* Optional: Add padding for better spacing */
+}
+
 
 
 .cell{
