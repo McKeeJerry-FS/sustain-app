@@ -46,16 +46,16 @@ passport.use(
 
 // Serialize user into the session
 passport.serializeUser((user, done) => {
-  done(null, user.id); // Store the user ID in the session
+  done(null, user.id); // Save the user ID in the session
 });
 
-// Deserialize user from the session
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id); // Retrieve the user from the database
-    done(null, user); // Attach the user object to `req.user`
-  } catch (error) {
-    done(error, null);
+    const user = await User.findById(id);
+    console.log('Deserialized User:', user); // Debug log
+    done(null, user);
+  } catch (err) {
+    done(err, null);
   }
 });
 

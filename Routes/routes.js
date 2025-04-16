@@ -4,7 +4,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' }); // Configure the upload destination
 const Garden = require('../Controllers/gardenController');
 const journalController = require('../Controllers/journalController');
-//const authenticateToken = require('../Middlewares/tokenMiddelware'); // Import the token middleware
+const ensureAuthorized = require('../Middlewares/ensureAuth'); // Import the token middleware
 
 
 // ******************************************************************
@@ -68,11 +68,23 @@ router.get('/plants', (req, res) => {
 //                         Journal Routes
 // ******************************************************************
 
-router.post('/journal/add', upload.single('image'), (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    return res.redirect('/auth/login');
-  }
-  journalController.addJournalEntry(req, res, next);
-});
+// router.post('/journal/add', upload.single('image'), (req, res, next) => {
+//   if (!req.isAuthenticated()) {
+//     return res.redirect('/auth/login');
+//   }
+//   journalController.addJournalEntry(req, res, next);
+// });
+
+router.post('/journal/add', ensureAuthenticated, upload.single('image'), journalController.addJournalEntry);
 
 module.exports = router;
+
+function ensureAuthenticated(req, res, next) {
+  console.log('Is Authenticated:', req.isAuthenticated());
+  console.log('User:', req.user);
+  if (req.isAuthenticated()) {
+    return next(); // User is authenticated, proceed to the next middleware or route handler
+  }
+  // User is not authenticated, redirect to login page
+  res.redirect('/auth/login');
+}
