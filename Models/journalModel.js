@@ -6,11 +6,22 @@ const journalSchema = new Schema({
         type: Date,
         default: new Date()
     },
+    gardenType: {
+        type: String,
+        enum: ['Hydroponics', 'Aeroponics', 'Aquaponics', 'Soil', 'Other'],
+        required: true
+    },
     journalEntry: String,
     ph: Number,
     temperature: Number,
     ec: Number,
     humidity: Number,
+    vpd: Number,
+    lightCycle: {
+        type: String,
+        enum: ['12/12', '16/8', '18/6', '24/0'],
+        required: true
+    },
     airTemp: Number,
     waterTemp: Number,
     waterLevel: Number,
