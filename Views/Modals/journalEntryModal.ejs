@@ -20,6 +20,21 @@
           </div>
         </div>
         <div class="field">
+          <label class="label">Garden Type</label>
+          <div class="control">
+            <div class="select">
+              <select name="gardenType" id="gardenType">
+                <option value="">Select Garden Type</option>
+                <option value="hydroponics">Hydroponics</option>
+                <option value="aeroponics">Aeroponics</option>
+                <option value="aquaponics">Aquaponics</option>
+                <option value="soil">Soil</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
           <label class="label">pH</label>
           <div class="control">
             <input id="ph" name="ph" class="input" type="text" placeholder="Enter pH value">
@@ -29,6 +44,12 @@
           <label class="label">Humidity</label>
           <div class="control">
             <input id="humidity" name="humidity" class="input" type="text" placeholder="Enter Humidity value">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">VPD</label>
+          <div class="control">
+            <input id="vpd" name="vpd" class="input" type="text" placeholder="Enter VPD value">
           </div>
         </div>
         <div class="field">
@@ -149,4 +170,27 @@
     }
   });
 
+  document.getElementById('gardenType').addEventListener('change', function () {
+    const gardenType = this.value; // Get the selected value
+    const gardenOptionSelect = document.getElementById('gardenOption');
+
+    // Clear existing options
+    gardenOptionSelect.innerHTML = '<option value="">Select Garden Option</option>';
+
+    // Populate options based on gardenType
+    if (gardenType === 'hydroponics') {
+      gardenOptionSelect.innerHTML += '<option value="deepWaterCulture">Deep Water Culture</option>';
+      gardenOptionSelect.innerHTML += '<option value="nutrientFilmTechnique">Nutrient Film Technique</option>';
+      gardenOptionSelect.innerHTML += '<option value="ebbFlow">Ebb & Flow</option>';
+    } else if (gardenType === 'aeroponics') {
+      gardenOptionSelect.innerHTML += '<option value="tower">Tower Garden</option>';
+    } else if (gardenType === 'aquaponics') {
+      gardenOptionSelect.innerHTML += '<option value="fishTank">Fish Tank</option>';
+    } else if (gardenType === 'soil') {
+      gardenOptionSelect.innerHTML += '<option value="raisedBed">Raised Bed</option>';
+      gardenOptionSelect.innerHTML += '<option value="container">Container Garden</option>';
+    } else if (gardenType === 'other') {
+      gardenOptionSelect.innerHTML += '<option value="other">Other</option>';
+    }
+  });
 </script>
