@@ -139,20 +139,13 @@
 </div>
 </section>
 <section id="updates">
-  <div class="columns">
-    <div class="column">
+  <div class="column">
       <div>
-        <h1 class="is-size-3">Daily Stats</h1>
+        <h1 class="is-size-3">Daily Metrics</h1>
       </div>
       <div class="box has-shadow">
         <div id="chartdiv"></div>
-      </div>
-    </div>
-
-    
-    <div class="column">
-      
-    </div>
+      </div> 
   </div>
 </section>
 
@@ -197,7 +190,7 @@
   var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
     behavior: "none"
   }));
-  cursor.lineY.set("visible", false);
+  cursor.lineY.set("visible", true);
 
 
   // Generate random data
