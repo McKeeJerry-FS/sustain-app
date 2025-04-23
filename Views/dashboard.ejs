@@ -1,166 +1,151 @@
-<section id="welcome" class="mt-3">
-  <div class="columns">
-
-    <div class="column">
-      <!-- <div id="welcome-header">
-        <h1 class="is-size-3">Dashboard</h1>
-      </div>
-      <div id="welcome-content">
-        <div class="box has-shadow">
-          <p>Welcome to your dashboard! Here you can manage your settings, view your data, track your progress, and manage your inventory</p>
-        </div>
-      </div> -->
-      <div id="updates-header">
-        <h1 class="is-size-3">Notifications</h1>
-      </div>
-      <div id="updates-content">
-        <div class="box has-shadow">
-          <p>Here you can find the latest notifications and alerts.</p>
-        </div>
+<h1 class="is-size-2">Welcome to Your Dashboard</h1>
+<!-- <button class="button is-small is-primary js-modal-trigger" data-target="journalEntryModal">Add New Post</button> -->
+<!-- <button class="button is-small is-primary" onclick="printJournal()">Print Journal Entry</button> -->
+<hr />
+<div class="columns">
+  <div class="column">
+    <div id="updates-header">
+      <h1 class="is-size-3">To Do List:</h1>
+    </div>
+    <div id="updates-content">
+      <div class="box has-shadow">
+        <p>Here you can find the latest notifications and alerts.</p>
       </div>
     </div>
-    
-    <div class="column">
-      <div id="updates-header">
-        <h1 class="is-size-3">Recent Journal Entries</h1>
-      </div>
-      <div id="updates-content">
-        <div class="box has-shadow">
-          <div class="table">
-            <h2 class="is-size-4">Daily Entries</h2>
-            <div class="row">
-              <div class="cell">
-                <label class="label" for="date">Entry Date: </label>
-              </div>
-              <div class="cell">
-                <span>April 14, 2025</span>
-              </div>
+  </div>
+  <div class="column">
+    <div id="updates-header">
+      <h1 class="is-size-3">Recent Journal Entries</h1>
+    </div>
+    <div id="updates-content">
+      <div class="box has-shadow">
+        <div class="table">
+          <h2 class="is-size-4">Daily Entries</h2>
+          <div class="row">
+            <div class="cell">
+              <label class="label" for="date">Entry Date: </label>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label class="label" for="entry">Journal Entry: </label>
-              </div>
-              <div class="cell">
-                <span>This is a new journal entry for activities done to the gardens.</span>
-              </div>
+            <div class="cell">
+              <span>April 14, 2025</span>
             </div>
-            <hr />
-            <h2 class="is-size-4">Daily Metrics</h2>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  pH: 
-                </label>
-              </div>
-              <div class="cell">
-                <span>5.8 ppm</span>
-              </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label class="label" for="entry">Journal Entry: </label>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">EC: </label>
-              </div>
-              <div class="cell">
-                1.0 mS/cm
-              </div>
+            <div class="cell">
+              <span>This is a new journal entry for activities done to the gardens.</span>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">Water Level: </label>
-              </div>
-              <div class="cell">
-                20% Full
-              </div>
+          </div>
+          <hr />
+          <h2 class="is-size-4">Daily Metrics</h2>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                pH: 
+              </label>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  Humidity: 
-                </label>
-              </div>
-              <div class="cell">
-                <span>60%</span>
-              </div>
+            <div class="cell">
+              <span>5.8 ppm</span>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  Temperature (Air): 
-                </label>
-              </div>
-              <div class="cell">
-                68°F
-              </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">EC: </label>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">Temperature (Water):</label>
-              </div>
-              <div class="cell">
-                68°F
-              </div>
+            <div class="cell">
+              1.0 mS/cm
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  Lighting (Active): 
-                </label>
-              </div>
-              <div class="cell">
-                <span>16 Hours</span>
-              </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">Water Level: </label>
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  Lighting (Dark): 
-                </label>
-              </div>
-              <div class="cell">
-                <span>8 Hours</span>
-              </div>
+            <div class="cell">
+              20% Full
             </div>
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label">
-                  Additional Notes: 
-                </label>
-              </div>
-              <div class="cell">
-                <span>All additional notes will be added here...</span>
-              </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                Humidity: 
+              </label>
             </div>
-            
-            <div class="row">
-              <div class="cell">
-                <label for="" class="label is-justify-content-start">Images</label>
-              </div>
-              <div class="cell">
-                <img src="/public/img/growtent.jpeg" alt="Image 1" class="image is-128x128" />
-              </div>
+            <div class="cell">
+              <span>60%</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                Temperature (Air): 
+              </label>
+            </div>
+            <div class="cell">
+              68°F
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">Temperature (Water):</label>
+            </div>
+            <div class="cell">
+              68°F
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                Lighting (Active): 
+              </label>
+            </div>
+            <div class="cell">
+              <span>16 Hours</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                Lighting (Dark): 
+              </label>
+            </div>
+            <div class="cell">
+              <span>8 Hours</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label">
+                Additional Notes: 
+              </label>
+            </div>
+            <div class="cell">
+              <span>All additional notes will be added here...</span>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="cell">
+              <label for="" class="label is-justify-content-start">Images</label>
+            </div>
+            <div class="cell">
+              <img src="/public/img/growtent.jpeg" alt="Image 1" class="image is-128x128" />
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+</div>
 </section>
 <section id="updates">
-  <div class="columns">
-    <div class="column">
+  <div class="column">
       <div>
-        <h1 class="is-size-3">Daily Stats</h1>
+        <h1 class="is-size-3">Daily Metrics</h1>
       </div>
       <div class="box has-shadow">
         <div id="chartdiv"></div>
-      </div>
-    </div>
-
-    
-    <div class="column">
-      
-    </div>
+      </div> 
   </div>
 </section>
 
@@ -205,7 +190,7 @@
   var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
     behavior: "none"
   }));
-  cursor.lineY.set("visible", false);
+  cursor.lineY.set("visible", true);
 
 
   // Generate random data
