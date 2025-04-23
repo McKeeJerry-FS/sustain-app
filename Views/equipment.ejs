@@ -8,21 +8,16 @@
   <table class="table" id="equipmentTable">
     <thead>
       <tr>
+        <th>Equipment Id</th>
+        <th>Quantity</th>
         <th>Equipment Name</th>
         <th>Description</th>
+        <th>Seial Number</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody id="equipmentTableBody">
-      <% equipment.forEach(function(item) { %>
-        <tr id="equipment-<%= item.id %>">
-          <td><%= item.name %></td>
-          <td><%= item.description %></td>
-          <td>
-            <button class="button is-small is-danger" onclick="deleteEquipment(<%= item.id %>)">Delete</button>
-          </td>
-        </tr>
-      <% }) %>
+      
     </tbody>
   </table>
 </div>
@@ -65,6 +60,10 @@
 </div>
 
 <script>
+  // Function for the Equipment DataTable
+  let equipmentTable = new DataTable('#equipmentTable');
+
+  // Function for the Modal
   document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
     function openModal($el) {
@@ -107,4 +106,6 @@
       }
     });
   });
+
+  
 </script>

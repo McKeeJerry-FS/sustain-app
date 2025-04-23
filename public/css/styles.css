@@ -45,6 +45,13 @@
   margin-bottom: 2rem;
 }
 
+/* #blogTable {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: .5px;
+} */
+
 #chartdiv {
   width: 100%;
   height: 250px;
