@@ -1,7 +1,7 @@
 <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <h2 style="font-size: 24px;">Garden Glow</h2>
+      <h2 class="has-text-light" style="font-size: 24px;">Garden Glow</h2>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -14,39 +14,39 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item has-text-light" href="/">
         Home
       </a>
 
       <% if (user) { %>
         
-      <a class="navbar-item" href="/dashboard">
+      <a class="navbar-item has-text-light" href="/dashboard">
         Dashboard
       </a>
 
-      <a class="navbar-item" href="/garden">
+      <a class="navbar-item has-text-light" href="/garden">
         Gardens
       </a>
       
-      <a class="navbar-item" href="/journal">
+      <a class="navbar-item has-text-light" href="/journal">
         Journal Entries
       </a>
 
-      <a class="navbar-item" href="/blog">
+      <a class="navbar-item has-text-light" href="/blog">
         Blog
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link has-text-light">
           Assets
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="/plants">
+          <a class="navbar-item has-text-light" href="/plants">
             Plants
           </a>
           
           <hr class="navbar-divider">
-          <a class="navbar-item" href="/equipment">
+          <a class="navbar-item has-text-light" href="/equipment">
             Your Equipment
           </a>
         </div>
@@ -55,20 +55,20 @@
       <% } %>
       
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link has-text-light">
           Help
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="/about">
+          <a class="navbar-item has-text-light" href="/about">
             About
           </a>
           
-          <a class="navbar-item" href="/contact">
+          <a class="navbar-item has-text-light" href="/contact">
             Contact
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <a class="navbar-item has-text-light">
             Report an issue
           </a>
         </div>

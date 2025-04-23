@@ -1,25 +1,29 @@
 <div class="row">
   <div class="columns">
     <div class="column">
-      <div id="blog-header">
-        <h1 class="is-size-3">Blog</h1>
-      </div>
-      <div>
-        <button class="button is-small is-primary mb-2">Add New Post</button>
-      </div>
+      
       <div id="blog-content">
         <div class="box has-shadow">
+          <div id="blog-header">
+            <h1 class="is-size-3">Blog</h1>
+          </div>
+          <div>
+            <button class="button is-small is-primary mb-2 mt-2">Add New Post</button>
+          </div>
           <p>Here you can find the latest blog posts and articles.</p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates iusto numquam eligendi vel enim deserunt, repellat molestiae eum blanditiis facilis quod perferendis reiciendis, nemo minus harum laboriosam veritatis ea. A.</p>
         </div>
       </div>
     </div>
     <div class="column">
-      <div id="blog-header">
-        <h1 class="is-size-3">Blog Dashboard</h1>
-      </div>
+      
       <div id="blog-content">
-        <div class="box has-shadow mt-5">
+        <div class="box has-shadow">
+          <div id="blog-header mb-2">
+            <h1 class="is-size-3 mb-3">Blog Dashboard</h1>
+          </div>
           <p>Here you can find the stats on blog posts and articles.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque debitis voluptates est voluptatibus vitae error, accusantium enim suscipit similique! Blanditiis quos ex impedit perspiciatis culpa error at aliquid harum mollitia.</p>
         </div>
       </div>
     </div>
@@ -29,7 +33,7 @@
   <div class="columns">
     <div class="column">
       <div class="box">
-        <table class="table is-striped is-hoverable is-fullwidth">
+        <table id="blogTable" class="table is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>
               <th>Title</th>
@@ -40,9 +44,9 @@
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>Setting up a VIVOSUN Grow Tent</td>
+              <td>Jerry McKee Jr</td>
+              <td>Wednesday, April 23, 2025</td>
               <td><a href="#">Details</a> | <a href="#">Edit</a> | <a href="#">Delete</a> </td>
             </tr>
           </tbody>
@@ -51,3 +55,8 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  let table = new DataTable('#blogTable');
+</script>
