@@ -1,4 +1,110 @@
-<h1 class="is-size-2 mt-3">My Equipment</h1>
-<button class="button is-small is-primary mt-3 js-modal-trigger" data-target="journalEntryModal">Add New Equipment</button>
-<!-- <button class="button is-small is-primary" onclick="printJournal()">Print Journal Entry</button> -->
-<hr />
+<div class="row">
+  <h1 class="is-size-2 mt-3">My Equipment</h1>
+  <button class="button is-small is-primary mt-3 js-modal-trigger" data-target="addEquipmentModal">Add New Equipment</button>
+  <!-- <button class="button is-small is-primary" onclick="printJournal()">Print Journal Entry</button> -->
+  <hr />
+</div>
+<div class="column">
+  <table class="table" id="equipmentTable">
+    <thead>
+      <tr>
+        <th>Equipment Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="equipmentTableBody">
+      <% equipment.forEach(function(item) { %>
+        <tr id="equipment-<%= item.id %>">
+          <td><%= item.name %></td>
+          <td><%= item.description %></td>
+          <td>
+            <button class="button is-small is-danger" onclick="deleteEquipment(<%= item.id %>)">Delete</button>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<!-- Add Equipment Modal -->
+<div class="modal" id="addEquipmentModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Equipment</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form id="addEquipmentForm" method="POST" action="/equipment/add">
+        <div class="field">
+          <label class="label">Equipment Name</label>
+          <div class="control">
+            <input type="text" name="name" class="input" required placeholder="Enter equipment name" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea name="description" class="textarea" required placeholder="Enter equipment description"></textarea>
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-right">
+          <div class="control">
+            <button type="submit" class="button is-primary">Add Equipment</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Functions to open and close a modal
+    function openModal($el) {
+      $el.classList.add('is-active');
+    }
+
+    function closeModal($el) {
+      $el.classList.remove('is-active');
+    }
+
+    function closeAllModals() {
+      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+        closeModal($modal);
+      });
+    }
+
+    // Add a click event on buttons to open a specific modal
+    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+      const modal = $trigger.dataset.target;
+      const $target = document.getElementById(modal);
+
+      $trigger.addEventListener('click', () => {
+        openModal($target);
+      });
+    });
+
+    // Add a click event on various child elements to close the parent modal
+    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+      const $target = $close.closest('.modal');
+
+      $close.addEventListener('click', () => {
+        closeModal($target);
+      });
+    });
+
+    // Add a keyboard event to close all modals
+    document.addEventListener('keydown', (event) => {
+      if(event.key === "Escape") {
+        closeAllModals();
+      }
+    });
+  });
+</script>
