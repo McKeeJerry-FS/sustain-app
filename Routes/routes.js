@@ -64,6 +64,13 @@ router.get('/plants', (req, res) => {
   res.render('plants', { title: 'Your PLants', user: req.user });
 });
 
+router.get('/nutrients', (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  res.render('nutrients', { title: 'Nutrients & Fertiliers', user: req.user });
+});
+
 // ******************************************************************
 //                         Journal Routes
 // ******************************************************************
