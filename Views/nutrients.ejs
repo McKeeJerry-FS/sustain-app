@@ -70,7 +70,14 @@
 
 <script>
   // Function for the Equipment DataTable
-  let nutrientTable = new DataTable('#nutrientTable');
+  $('#nutrientTable').dataTable({
+    "columnDefs": [{
+      "className": "dt-body-center",
+      "targets": [0, 1, 2, 3, 5, 6]
+    }],
+    "columnDefs": [{ width: 600, targets: 4 }],
+    "scrollX": true,
+  });
 
   // Function for the Modal
   document.addEventListener('DOMContentLoaded', () => {
