@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const equipmentSchema = new Schema({
     name: String,
+    manufacturer: String,
     description: String,
     serialnumber: String,
     quantity: Number,
@@ -17,5 +18,5 @@ const equipmentSchema = new Schema({
     
 });
 
-const BlogPost = mongoose.model('Equipment', equipmentSchema);
+const Equipment = mongoose.model('Equipment', equipmentSchema);
 module.exports = Equipment;
