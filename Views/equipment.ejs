@@ -12,6 +12,7 @@
         <th>Quantity</th>
         <th>Equipment Name</th>
         <th>Description</th>
+        <th>Cost</th>
         <th>Seial Number</th>
         <th>Actions</th>
       </tr>
@@ -38,15 +39,33 @@
     <section class="modal-card-body">
       <form id="addEquipmentForm" method="POST" action="/equipment/add">
         <div class="field">
-          <label class="label">Equipment Name</label>
+          <label class="label">Quantity: </label>
+          <div class="control">
+            <input type="text" name="name" class="input" required placeholder="Enter quantity" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Equipment Name: </label>
           <div class="control">
             <input type="text" name="name" class="input" required placeholder="Enter equipment name" />
           </div>
         </div>
         <div class="field">
-          <label class="label">Description</label>
+          <label class="label">Description: </label>
           <div class="control">
             <textarea name="description" class="textarea" required placeholder="Enter equipment description"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Cost: </label>
+          <div class="control">
+            <textarea name="description" class="input" required placeholder="Enter equipment description"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Serial Number: </label>
+          <div class="control">
+            <textarea name="description" class="input" required placeholder="Enter equipment description"></textarea>
           </div>
         </div>
         <div class="field is-grouped is-grouped-right">
