@@ -4,6 +4,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' }); // Configure the upload destination
 const Garden = require('../Controllers/gardenController');
 const journalController = require('../Controllers/journalController');
+const equipmentController = require('../Controllers/equipmentController');
 const ensureAuthorized = require('../Middlewares/ensureAuth'); // Import the token middleware
 
 
@@ -86,6 +87,14 @@ router.get('/journal/entries', ensureAuthenticated, journalController.getJournal
 router.get('/journal/entries/:id', ensureAuthenticated, journalController.getJournalEntryById);
 
 router.post('/journal/add', ensureAuthenticated, upload.single('image'), journalController.addJournalEntry);
+
+// ******************************************************************
+//                         Equipment Routes
+// ******************************************************************
+router.get('/equipment/entries', ensureAuthenticated, equipmentController.getEquipment);
+router.get('/equipment/entries/:id', ensureAuthenticated, equipmentController.getEquipmentById);
+router.post('/equipment/add', ensureAuthenticated, equipmentController.addEquipment);
+
 
 module.exports = router;
 
